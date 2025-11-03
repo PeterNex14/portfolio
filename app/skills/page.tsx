@@ -1,11 +1,21 @@
 "use client";
 import SkillItem from "@/components/SkillItem";
-import { BiLogoMongodb, BiLogoPostgresql, BiLogoSpringBoot, BiLogoTypescript } from "react-icons/bi";
+import {
+    BiLogoMongodb,
+    BiLogoPostgresql,
+    BiLogoSpringBoot,
+    BiLogoTypescript,
+} from "react-icons/bi";
 import { DiDart } from "react-icons/di";
 import { FaCss3Alt, FaDatabase, FaNodeJs } from "react-icons/fa";
 import { FaHtml5 } from "react-icons/fa6";
 import { FaFlutter } from "react-icons/fa6";
-import { RiJavascriptFill, RiNextjsFill, RiSupabaseFill, RiTailwindCssFill } from "react-icons/ri";
+import {
+    RiJavascriptFill,
+    RiNextjsFill,
+    RiSupabaseFill,
+    RiTailwindCssFill,
+} from "react-icons/ri";
 import { SiJetpackcompose, SiKotlin, SiPostman } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
 import { motion } from "framer-motion";
@@ -38,17 +48,10 @@ export default function SkillsPage() {
         { icon: <TbBrandReactNative className="w-7 h-7" />, label: "React Native" },
     ];
 
+    // ✅ Static variants (no function here)
     const cardVariants = {
         hidden: { opacity: 0, y: 40 },
-        visible: (i: number) => ({
-            opacity: 1,
-            y: 0,
-            transition: {
-                delay: i * 0.3,
-                duration: 0.5,
-                ease: "easeOut",
-            },
-        }),
+        visible: { opacity: 1, y: 0 },
     };
 
     return (
@@ -67,14 +70,18 @@ export default function SkillsPage() {
                 ].map((category, i) => (
                     <motion.div
                         key={i}
-                        custom={i}
                         variants={cardVariants}
                         initial="hidden"
                         animate="visible"
+                        transition={{
+                            delay: i * 0.3,
+                            duration: 0.6,
+                            ease: "easeOut",
+                        }}
                         className="flex flex-col items-center justify-between
-                                   p-6 w-full md:w-1/3 rounded-2xl text-center 
-                                   shadow-lg border border-gray-100 bg-white/70 backdrop-blur-sm 
-                                   hover:shadow-2xl transition-all duration-300"
+                       p-6 w-full md:w-1/3 rounded-2xl text-center 
+                       shadow-lg border border-gray-100 bg-white/70 backdrop-blur-sm 
+                       hover:shadow-2xl transition-all duration-300"
                     >
                         <p className="font-mono font-bold text-2xl sm:text-3xl mb-4">
                             {category.title}
