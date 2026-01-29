@@ -9,6 +9,8 @@ const SkillsFieldComponents = () => {
                 2000,
                 "Frontend Developer",
                 2000,
+                "Backend Developer",
+                2000,
             ]}
             wrapper="span"
             speed={20}
