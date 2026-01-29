@@ -13,6 +13,38 @@ export default function ProjectPage() {
                     <div className="flex flex-row gap-2">
                         <div className="w-full">
                             <p className="text-lg sm:text-xl font-bold text-white">
+                                Chirpy
+                            </p>
+                            <p className="text-xs sm:text-sm text-gray-400 mt-1 leading-snug">
+                                Chirpy is a social media backend API built with Go. It serves as a platform where users can sign up, share short messages called "chirps", and interact with a community. It demonstrates the core principles of building robust, scalable backend systems, including authentication, database management, and RESTful API design.
+                            </p>
+                        </div>
+                        <div>
+                            <Link href="https://github.com/PeterNex14/Chirpy.git">
+                                <div className="p-2 sm:p-3 bg-white rounded-full">
+                                    <FiArrowUpRight className="text-[#11224E] w-4 h-4 sm:w-5 sm:h-5" />
+                                </div>
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="w-full h-[220px] sm:h-[350px] mt-6 overflow-hidden">
+                        <div className="absolute bottom-[20%] right-[-30%] w-full h-[30%] scale-200">
+                            <Image
+                                src="/chirpy.png"
+                                alt="Chirpy"
+                                fill
+                                className="object-contain drop-shadow-2xl rounded-xl"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                {/* Card 1 */}
+                <div className="relative flex flex-col justify-between rounded-2xl overflow-hidden bg-[#11224E] pt-6 px-4 sm:px-6 shadow-md hover:shadow-xl transition-all duration-500">
+                    <div className="flex flex-row gap-2">
+                        <div className="w-full">
+                            <p className="text-lg sm:text-xl font-bold text-white">
                                 Blog Aggregator
                             </p>
                             <p className="text-xs sm:text-sm text-gray-400 mt-1 leading-snug">
