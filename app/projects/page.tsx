@@ -13,6 +13,38 @@ export default function ProjectPage() {
                     <div className="flex flex-row gap-2">
                         <div className="w-full">
                             <p className="text-lg sm:text-xl font-bold text-white">
+                                Blog Aggregator
+                            </p>
+                            <p className="text-xs sm:text-sm text-gray-400 mt-1 leading-snug">
+                                Gator (short for aggreGATOR 🐊) is a CLI tool built in Go that functions as a personal RSS feed aggregator.
+                            </p>
+                        </div>
+                        <div>
+                            <Link href="https://github.com/PeterNex14/blog-aggregator.git">
+                                <div className="p-2 sm:p-3 bg-white rounded-full">
+                                    <FiArrowUpRight className="text-[#11224E] w-4 h-4 sm:w-5 sm:h-5" />
+                                </div>
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="w-full h-[220px] sm:h-[350px] mt-6 overflow-hidden">
+                        <div className="absolute bottom-[20%] right-[-30%] w-full h-[30%] scale-200">
+                            <Image
+                                src="/blog-aggregator.png"
+                                alt="Blog Aggregator"
+                                fill
+                                className="object-contain drop-shadow-2xl rounded-xl"
+                            />
+                        </div>
+                    </div>
+                </div>
+                
+                {/* Card 1 */}
+                <div className="relative flex flex-col justify-between rounded-2xl overflow-hidden bg-[#11224E] pt-6 px-4 sm:px-6 shadow-md hover:shadow-xl transition-all duration-500">
+                    <div className="flex flex-row gap-2">
+                        <div className="w-full">
+                            <p className="text-lg sm:text-xl font-bold text-white">
                                 Pokedex CLI
                             </p>
                             <p className="text-xs sm:text-sm text-gray-400 mt-1 leading-snug">
