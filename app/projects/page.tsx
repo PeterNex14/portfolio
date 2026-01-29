@@ -13,6 +13,38 @@ export default function ProjectPage() {
                     <div className="flex flex-row gap-2">
                         <div className="w-full">
                             <p className="text-lg sm:text-xl font-bold text-white">
+                                Bookbot
+                            </p>
+                            <p className="text-xs sm:text-sm text-gray-400 mt-1 leading-snug">
+                                BookBot is a command-line interface (CLI) tool that analyzes text files (like books!) to gather interesting statistics. It reports the total number of words and the frequency of each character found in the document.
+                            </p>
+                        </div>
+                        <div>
+                            <Link href="https://github.com/PeterNex14/Bookbot.git">
+                                <div className="p-2 sm:p-3 bg-white rounded-full">
+                                    <FiArrowUpRight className="text-[#11224E] w-4 h-4 sm:w-5 sm:h-5" />
+                                </div>
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="w-full h-[220px] sm:h-[350px] mt-6 overflow-hidden">
+                        <div className="absolute bottom-[20%] right-[-50%] w-full h-[30%] scale-200">
+                            <Image
+                                src="/bookbot.png"
+                                alt="Mockup Phone"
+                                fill
+                                className="object-contain drop-shadow-2xl"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                {/* Card 2 */}
+                <div className="relative flex flex-col justify-between rounded-2xl overflow-hidden bg-[#11224E] pt-6 px-4 sm:px-6 shadow-md hover:shadow-xl transition-all duration-500">
+                    <div className="flex flex-row gap-2">
+                        <div className="w-full">
+                            <p className="text-lg sm:text-xl font-bold text-white">
                                 Klinik Anugerah Tomohon Mobile App
                             </p>
                             <p className="text-xs sm:text-sm text-gray-400 mt-1 leading-snug">
@@ -26,7 +58,7 @@ export default function ProjectPage() {
                         </div>
                     </div>
 
-                    <div className="relative w-full h-[220px] sm:h-[350px] mt-6 overflow-hidden">
+                    <div className="w-full h-[220px] sm:h-[350px] mt-6 overflow-hidden">
                         <div className="absolute bottom-[-60%] right-[-30%] w-[140%] h-[140%] scale-150">
                             <Image
                                 src="/mockup.png"
@@ -38,7 +70,7 @@ export default function ProjectPage() {
                     </div>
                 </div>
 
-                {/* Card 2 */}
+                {/* Card 3 */}
                 <div className="relative flex flex-col justify-between rounded-2xl overflow-hidden bg-[#11224E] pt-6 px-4 sm:px-6 shadow-md hover:shadow-xl transition-all duration-500">
                     <div className="flex flex-row gap-2">
                         <div className="w-full">
@@ -58,8 +90,8 @@ export default function ProjectPage() {
                         </div>
                     </div>
 
-                    <div className="relative w-full h-[220px] sm:h-[350px] mt-6 overflow-hidden">
-                        <div className="absolute bottom-[10%] right-[0%] w-[60%] h-[60%] scale-150">
+                    <div className="w-full h-[220px] sm:h-[350px] mt-6 overflow-hidden">
+                        <div className="absolute bottom-[-35%] right-[-50%] w-[140%] h-[140%] scale-140">
                             <Image
                                 src="/mockup_dashboard.png"
                                 alt="Mockup Dashboard"
@@ -70,7 +102,7 @@ export default function ProjectPage() {
                     </div>
                 </div>
 
-                {/* Card 3 */}
+                {/* Card 4 */}
                 <div className="relative flex flex-col justify-between rounded-2xl overflow-hidden bg-[#11224E] pt-6 px-4 sm:px-6 shadow-md hover:shadow-xl transition-all duration-500">
                     <div className="flex flex-row gap-2">
                         <div className="w-full">
@@ -102,7 +134,7 @@ export default function ProjectPage() {
                     </div>
                 </div>
 
-                {/* Card 4 */}
+                {/* Card 5 */}
                 <div className="relative flex flex-col justify-between rounded-2xl overflow-hidden bg-[#11224E] pt-6 px-4 sm:px-6 shadow-md hover:shadow-xl transition-all duration-500">
                     <div className="flex flex-row gap-2">
                         <div className="w-full">
@@ -113,16 +145,16 @@ export default function ProjectPage() {
                             </p>
                         </div>
                         <div>
-                            <div className="p-2 sm:p-3 bg-white rounded-full">
-                                <Link href="https://github.com/PeterNex14/my-city-app.git">
+                            <Link href="https://github.com/PeterNex14/my-city-app.git">
+                                <div className="p-2 sm:p-3 bg-white rounded-full">
                                     <FiArrowUpRight className="text-[#11224E] w-4 h-4 sm:w-5 sm:h-5" />
-                                </Link>
-                            </div>
+                                </div>  
+                            </Link>
                         </div>
                     </div>
 
-                    <div className="relative w-full h-[220px] sm:h-[350px] mt-6 overflow-hidden">
-                        <div className="absolute bottom-[0%] -right-[20%] w-full h-[60%] scale-125">
+                    <div className="w-full h-[220px] sm:h-[350px] mt-6 overflow-hidden">
+                        <div className="absolute bottom-[-10%] w-full h-[60%] scale-185">
                             <Image
                                 src="/phone-category.png"
                                 alt="Mockup Phone"
@@ -133,7 +165,7 @@ export default function ProjectPage() {
                     </div>
                 </div>
 
-                {/* Card 5 */}
+                {/* Card 6 */}
                 <div className="relative flex flex-col justify-between rounded-2xl overflow-hidden bg-[#11224E] pt-6 px-4 sm:px-6 shadow-md hover:shadow-xl transition-all duration-500">
                     <div className="flex flex-row gap-2">
                         <div className="w-full">
@@ -144,16 +176,16 @@ export default function ProjectPage() {
                             </p>
                         </div>
                         <div>
-                            <div className="p-2 sm:p-3 bg-white rounded-full">
-                                <Link href="https://github.com/PeterNex14/MoviesApp.git">
+                            <Link href="https://github.com/PeterNex14/MoviesApp.git">
+                                <div className="p-2 sm:p-3 bg-white rounded-full">
                                     <FiArrowUpRight className="text-[#11224E] w-4 h-4 sm:w-5 sm:h-5" />
-                                </Link>
-                            </div>
+                                </div>
+                            </Link>
                         </div>
                     </div>
 
-                    <div className="relative w-full h-[220px] sm:h-[350px] mt-6 overflow-hidden">
-                        <div className="absolute bottom-[0%] -right-[20%] w-full h-[60%] scale-125">
+                    <div className="w-full h-[220px] sm:h-[350px] mt-6 overflow-hidden">
+                        <div className="absolute bottom-[-10%] w-full h-[60%] scale-175">
                             <Image
                                 src="/movies_app.png"
                                 alt="Movies App"
