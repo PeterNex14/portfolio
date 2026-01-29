@@ -13,6 +13,38 @@ export default function ProjectPage() {
                     <div className="flex flex-row gap-2">
                         <div className="w-full">
                             <p className="text-lg sm:text-xl font-bold text-white">
+                                AI Agent Boot
+                            </p>
+                            <p className="text-xs sm:text-sm text-gray-400 mt-1 leading-snug">
+                                This project is a CLI-based AI coding assistant (Agent) capable of performing autonomous tasks on the local file system. It leverages the Google Gemini API to understand user prompts and executes actions using a set of defined tools (Function Calling).
+                            </p>
+                        </div>
+                        <div>
+                            <Link href="https://github.com/PeterNex14/ai-coding-agent.git">
+                                <div className="p-2 sm:p-3 bg-white rounded-full">
+                                    <FiArrowUpRight className="text-[#11224E] w-4 h-4 sm:w-5 sm:h-5" />
+                                </div>
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="w-full h-[220px] sm:h-[350px] mt-6 overflow-hidden">
+                        <div className="absolute bottom-[20%] right-[-30%] w-full h-[30%] scale-200">
+                            <Image
+                                src="/ai-agent.png"
+                                alt="Static Site Generator"
+                                fill
+                                className="object-contain drop-shadow-2xl rounded-xl"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                {/* Card 2 */}
+                <div className="relative flex flex-col justify-between rounded-2xl overflow-hidden bg-[#11224E] pt-6 px-4 sm:px-6 shadow-md hover:shadow-xl transition-all duration-500">
+                    <div className="flex flex-row gap-2">
+                        <div className="w-full">
+                            <p className="text-lg sm:text-xl font-bold text-white">
                                 Static Site Generator
                             </p>
                             <p className="text-xs sm:text-sm text-gray-400 mt-1 leading-snug">
@@ -40,7 +72,7 @@ export default function ProjectPage() {
                     </div>
                 </div>
 
-                {/* Card 2 */}
+                {/* Card 3 */}
                 <div className="relative flex flex-col justify-between rounded-2xl overflow-hidden bg-[#11224E] pt-6 px-4 sm:px-6 shadow-md hover:shadow-xl transition-all duration-500">
                     <div className="flex flex-row gap-2">
                         <div className="w-full">
@@ -72,7 +104,7 @@ export default function ProjectPage() {
                     </div>
                 </div>
 
-                {/* Card 3 */}
+                {/* Card 4 */}
                 <div className="relative flex flex-col justify-between rounded-2xl overflow-hidden bg-[#11224E] pt-6 px-4 sm:px-6 shadow-md hover:shadow-xl transition-all duration-500">
                     <div className="flex flex-row gap-2">
                         <div className="w-full">
@@ -102,7 +134,7 @@ export default function ProjectPage() {
                     </div>
                 </div>
 
-                {/* Card 4 */}
+                {/* Card 5 */}
                 <div className="relative flex flex-col justify-between rounded-2xl overflow-hidden bg-[#11224E] pt-6 px-4 sm:px-6 shadow-md hover:shadow-xl transition-all duration-500">
                     <div className="flex flex-row gap-2">
                         <div className="w-full">
@@ -134,7 +166,7 @@ export default function ProjectPage() {
                     </div>
                 </div>
 
-                {/* Card 5 */}
+                {/* Card 6 */}
                 <div className="relative flex flex-col justify-between rounded-2xl overflow-hidden bg-[#11224E] pt-6 px-4 sm:px-6 shadow-md hover:shadow-xl transition-all duration-500">
                     <div className="flex flex-row gap-2">
                         <div className="w-full">
@@ -166,7 +198,7 @@ export default function ProjectPage() {
                     </div>
                 </div>
 
-                {/* Card 6 */}
+                {/* Card 7 */}
                 <div className="relative flex flex-col justify-between rounded-2xl overflow-hidden bg-[#11224E] pt-6 px-4 sm:px-6 shadow-md hover:shadow-xl transition-all duration-500">
                     <div className="flex flex-row gap-2">
                         <div className="w-full">
@@ -197,7 +229,7 @@ export default function ProjectPage() {
                     </div>
                 </div>
 
-                {/* Card 7 */}
+                {/* Card 8 */}
                 <div className="relative flex flex-col justify-between rounded-2xl overflow-hidden bg-[#11224E] pt-6 px-4 sm:px-6 shadow-md hover:shadow-xl transition-all duration-500">
                     <div className="flex flex-row gap-2">
                         <div className="w-full">
