@@ -13,6 +13,38 @@ export default function ProjectPage() {
                     <div className="flex flex-row gap-2">
                         <div className="w-full">
                             <p className="text-lg sm:text-xl font-bold text-white">
+                                Dicoding Events App
+                            </p>
+                            <p className="text-xs sm:text-sm text-gray-400 mt-1 leading-snug">
+                                Dicoding Events is an Android application that provides information about upcoming and finished events from Dicoding. Users can explore various events, view event details, bookmark their favorite events, and receive daily notifications for the nearest upcoming events.
+                            </p>
+                        </div>
+                        <div>
+                            <Link href="https://github.com/PeterNex14/dicoding-event-app">
+                                <div className="p-2 sm:p-3 bg-white rounded-full">
+                                    <FiArrowUpRight className="text-[#11224E] w-4 h-4 sm:w-5 sm:h-5" />
+                                </div>
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="w-full h-[220px] sm:h-[350px] mt-6 overflow-hidden">
+                        <div className="absolute bottom-[20%] right-[-30%] w-full h-[30%] scale-250">
+                            <Image
+                                src="/dicoding-events.png"
+                                alt="Dicoding Events App"
+                                fill
+                                className="object-contain drop-shadow-2xl rounded-xl"
+                            />
+                        </div>
+                    </div>
+                </div>
+                
+                {/* Card 1 */}
+                <div className="relative flex flex-col justify-between rounded-2xl overflow-hidden bg-[#11224E] pt-6 px-4 sm:px-6 shadow-md hover:shadow-xl transition-all duration-500">
+                    <div className="flex flex-row gap-2">
+                        <div className="w-full">
+                            <p className="text-lg sm:text-xl font-bold text-white">
                                 Chirpy
                             </p>
                             <p className="text-xs sm:text-sm text-gray-400 mt-1 leading-snug">
