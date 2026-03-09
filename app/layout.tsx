@@ -26,9 +26,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${montserrat.variable} ${anton.variable} antialiased flex flex-col h-screen`}
+        className={`${montserrat.variable} ${anton.variable} antialiased flex flex-col min-h-screen`}
+        suppressHydrationWarning
       >
         <NavigationBar />
         {children}
