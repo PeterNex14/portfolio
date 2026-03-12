@@ -1,60 +1,45 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+
+type Experience = {
+    id: string;
+    role: string;
+    company: string;
+    period: string;
+    description: string[];
+};
 
 export default function ExperienceSection() {
-    const experiences = [
-        {
-            role: "Software Developer Intern (Hybrid)",
-            company: "Renify",
-            period: "July 2024 – September 2024",
-            description: [
-                "Successfully developed and launched the company's official profile website utilizing WordPress, optimizing external communication.",
-                "Collaborated cross-functionally on the initial design phase for a new Document Manager web project.",
-                "Designed a logical and intuitive user flow for document management, improving internal stakeholder usability."
-            ]
-        },
-        {
-            role: "Head of the Organizing Committee TechoFest 2024",
-            company: "UNSRAT IT Community",
-            period: "April 2024 – November 2024",
-            description: [
-                "Successfully led and managed six core divisions ensuring team synergy and execution of all event stages.",
-                "Directed the successful organization of the Clash of Informatics competition, significantly increasing participant engagement.",
-                "Oversaw the Public Relation and Content Creator divisions to build event brand awareness."
-            ]
-        },
-        {
-            role: "Assistant Lecturer (Hybrid)",
-            company: "Sam Ratulangi University",
-            period: "September 2023 – November 2023",
-            description: [
-                "Collaborated on large-scale technical instruction supporting the Database Practicum (300 students) and the Algorithm Practicum.",
-                "Delivered foundational technical content for core Database Concepts and Algorithm & Programming fundamentals.",
-                "Optimized learning processes through the creation and management of online schedules for assistance and live technical demos."
-            ]
-        },
-        {
-            role: "Assistant Dev Leads & UI/UX Designer at TechoFest 2023",
-            company: "UNSRAT IT Community",
-            period: "September 2023 – November 2023",
-            description: [
-                "Facilitated daily scrum meetings for a cross-functional team of 46 members, ensuring project alignment.",
-                "Drove a user-centric design strategy by conducting User Research to identify and synthesize user needs.",
-                "Created and delivered key digital assets, including wireframes, interactive prototypes, and final visual designs."
-            ]
-        },
-        {
-            role: "Co-Founder & Graphic Design",
-            company: "XZIGHT Organizer",
-            period: "April 2020 – August 2020",
-            description: [
-                "Co-founded and led the operational execution for 6 online esports tournaments.",
-                "Directly managed event budgets and financials, successfully implementing cost-effective solutions.",
-                "Developed and executed targeted digital marketing strategies across social media."
-            ]
-        },
-    ];
+    const [experiences, setExperiences] = useState<Experience[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchExperiences = async () => {
+            try {
+                // Front-end fetching from the back-end API route
+                const res = await fetch('/api/experiences');
+                if (!res.ok) throw new Error('Failed to fetch data');
+                const data = await res.json();
+                setExperiences(data);
+            } catch (error) {
+                console.error("Error fetching experiences:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchExperiences();
+    }, []);
+
+    if (loading) {
+        return (
+            <section id="experience" className="relative w-full flex flex-col px-4 sm:px-6 py-20 bg-gray-50/50 min-h-[500px] items-center justify-center">
+                <div className="w-8 h-8 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+            </section>
+        );
+    }
 
     return (
         <section id="experience" className="relative w-full flex flex-col px-4 sm:px-6 py-20 bg-gray-50/50">

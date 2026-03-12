@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model message {
+  id        String   @id @default(uuid())
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+}
+
+model experience {
+  id          String   @id @default(uuid())
+  role        String
+  company     String
+  period      String
+  description String[] // Array of bullet points
+  order       Int      @default(0) // Used for custom sorting
+  createdAt   DateTime @default(now())
+}
+
