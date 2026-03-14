@@ -12,6 +12,7 @@ model message {
   email     String
   message   String
   createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 }
 
 model experience {
@@ -20,7 +21,7 @@ model experience {
   company     String
   period      String
   description String[] // Array of bullet points
-  order       Int      @default(0) // Used for custom sorting
   createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
 }
 

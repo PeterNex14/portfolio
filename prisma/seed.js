@@ -14,7 +14,6 @@ async function main() {
         'Collaborated cross-functionally on the initial design phase for a new Document Manager web project.',
         'Designed a logical and intuitive user flow for document management, improving internal stakeholder usability.',
       ],
-      order: 10,
     },
     {
       role: 'Head of the Organizing Committee TechoFest 2024',
@@ -25,7 +24,6 @@ async function main() {
         'Directed the successful organization of the Clash of Informatics competition, significantly increasing participant engagement.',
         'Oversaw the Public Relation and Content Creator divisions to build event brand awareness.',
       ],
-      order: 20,
     },
     {
       role: 'Assistant Lecturer (Hybrid)',
@@ -36,7 +34,6 @@ async function main() {
         'Delivered foundational technical content for core Database Concepts and Algorithm & Programming fundamentals.',
         'Optimized learning processes through the creation and management of online schedules for assistance and live technical demos.',
       ],
-      order: 30,
     },
     {
       role: 'Assistant Dev Leads & UI/UX Designer at TechoFest 2023',
@@ -47,7 +44,6 @@ async function main() {
         'Drove a user-centric design strategy by conducting User Research to identify and synthesize user needs.',
         'Created and delivered key digital assets, including wireframes, interactive prototypes, and final visual designs.',
       ],
-      order: 40,
     },
     {
       role: 'Co-Founder & Graphic Design',
@@ -58,7 +54,6 @@ async function main() {
         'Directly managed event budgets and financials, successfully implementing cost-effective solutions.',
         'Developed and executed targeted digital marketing strategies across social media.',
       ],
-      order: 50,
     },
   ];
 

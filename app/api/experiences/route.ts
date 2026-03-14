@@ -4,7 +4,7 @@ import prisma from '@/lib/prisma';
 export async function GET() {
   try {
     const experiences = await prisma.experience.findMany({
-      orderBy: { order: 'asc' },
+      orderBy: { createdAt: 'desc' },
     });
     
     return NextResponse.json(experiences, { status: 200 });
@@ -20,7 +20,7 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { role, company, period, description, order } = body;
+    const { role, company, period, description } = body;
 
     // Validate required fields
     if (!role || !company || !period || !description || !Array.isArray(description)) {
@@ -36,7 +36,6 @@ export async function POST(request: Request) {
         company,
         period,
         description,
-        order: order || 0,
       },
     });
 
@@ -75,5 +74,49 @@ export async function DELETE(request: Request) {
     );
   }
 }
+
+export async function PUT(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+
+    if (!id) {
+      return NextResponse.json(
+        { error: 'Experience ID is required' },
+        { status: 400 }
+      );
+    }
+
+    const body = await request.json();
+    const { role, company, period, description } = body;
+
+    // Validate required fields
+    if (!role || !company || !period || !description || !Array.isArray(description)) {
+      return NextResponse.json(
+        { error: 'Missing or invalid required fields' },
+        { status: 400 }
+      );
+    }
+
+    const updatedExperience = await prisma.experience.update({
+      where: { id },
+      data: {
+        role,
+        company,
+        period,
+        description,
+      },
+    });
+
+    return NextResponse.json(updatedExperience, { status: 200 });
+  } catch (error) {
+    console.error('Error updating experience:', error);
+    return NextResponse.json(
+      { error: 'Failed to update experience' },
+      { status: 500 }
+    );
+  }
+}
+
 
 
