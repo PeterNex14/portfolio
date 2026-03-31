@@ -1,44 +1,86 @@
 "use client";
 import { motion } from "framer-motion";
-import { FaAward, FaCertificate } from "react-icons/fa6";
+import { FaCertificate } from "react-icons/fa6";
 import { FiExternalLink } from "react-icons/fi";
 
 export default function CertificationsSection() {
     const certifications = [
         {
-            title: "Belajar Membuat Aplikasi Android untuk Pemula",
-            issuer: "Dicoding",
-            date: "2023",
-            icon: <FaAward className="w-8 h-8 text-orange-500" />
-        },
-        {
             title: "Belajar Fundamental Aplikasi Android",
             issuer: "Dicoding",
-            date: "2023",
-            icon: <FaAward className="w-8 h-8 text-rose-500" />
-        },
-        {
-            title: "Belajar Pengembangan Aplikasi Android Intermediate",
-            issuer: "Dicoding",
-            date: "2023",
-            icon: <FaCertificate className="w-8 h-8 text-purple-500" />
-        },
-        {
-            title: "Menjadi Android Developer Expert",
-            issuer: "Dicoding",
-            date: "2024",
+            date: "March 2026 - 2029",
             icon: <FaCertificate className="w-8 h-8 text-blue-500" />
+        },
+        {
+            title: "Memulai Pemrograman dengan Python",
+            issuer: "Dicoding",
+            date: "February 2026 - 2029",
+            icon: <FaCertificate className="w-8 h-8 text-yellow-500" />
+        },
+        {
+            title: "Belajar Dasar AI",
+            issuer: "Dicoding",
+            date: "February 2026 - 2029",
+            icon: <FaCertificate className="w-8 h-8 text-purple-500" />
         },
         {
             title: "Belajar Dasar Git dengan GitHub",
             issuer: "Dicoding",
-            date: "2023",
-            icon: <FaAward className="w-8 h-8 text-gray-700" />
+            date: "February 2026 - 2029",
+            icon: <FaCertificate className="w-8 h-8 text-red-500" />
         },
         {
-            title: "Google UX Design Professional Certificate",
-            issuer: "Coursera",
-            date: "2023",
+            title: "Pengenalan ke Logika Pemrograman (Programming Logic 101)",
+            issuer: "Dicoding",
+            date: "February 2026 - 2029",
+            icon: <FaCertificate className="w-8 h-8 text-indigo-500" />
+        },
+        {
+            title: "Memulai Dasar Pemrograman untuk Menjadi Pengembang Software",
+            issuer: "Dicoding",
+            date: "February 2026 - 2029",
+            icon: <FaCertificate className="w-8 h-8 text-cyan-500" />
+        },
+        {
+            title: "Membangun Aplikasi Gen AI dengan Microsoft Azure",
+            issuer: "Dicoding",
+            date: "October 2025 - 2028",
+            icon: <FaCertificate className="w-8 h-8 text-sky-500" />
+        },
+        {
+            title: "Belajar Penerapan Data Science dengan Microsoft Fabric",
+            issuer: "Dicoding",
+            date: "October 2025 - 2028",
+            icon: <FaCertificate className="w-8 h-8 text-fuchsia-500" />
+        },
+        {
+            title: "Belajar Membuat Aplikasi Android untuk Pemula",
+            issuer: "Dicoding",
+            date: "October 2025 - 2028",
+            icon: <FaCertificate className="w-8 h-8 text-orange-500" />
+        },
+        {
+            title: "Memulai Pemrograman dengan Kotlin",
+            issuer: "Dicoding",
+            date: "October 2025 - 2028",
+            icon: <FaCertificate className="w-8 h-8 text-violet-500" />
+        },
+        {
+            title: "Belajar Membuat Aplikasi Flutter untuk Pemula",
+            issuer: "Dicoding",
+            date: "November 2023 - 2026",
+            icon: <FaCertificate className="w-8 h-8 text-teal-500" />
+        },
+        {
+            title: "Memulai Pemrograman dengan Dart",
+            issuer: "Dicoding",
+            date: "October 2023 - 2026",
+            icon: <FaCertificate className="w-8 h-8 text-rose-500" />
+        },
+        {
+            title: "Belajar Dasar Structured Query Language (SQL)",
+            issuer: "Dicoding",
+            date: "September 2023 - 2026",
             icon: <FaCertificate className="w-8 h-8 text-emerald-500" />
         }
     ];
