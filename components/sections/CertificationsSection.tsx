@@ -1,47 +1,36 @@
 "use client";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FaAward, FaCertificate } from "react-icons/fa6";
 import { FiExternalLink } from "react-icons/fi";
+import React from "react";
+
+const IconMap: Record<string, React.ElementType> = {
+    FaAward: FaAward,
+    FaCertificate: FaCertificate,
+};
 
 export default function CertificationsSection() {
-    const certifications = [
-        {
-            title: "Belajar Membuat Aplikasi Android untuk Pemula",
-            issuer: "Dicoding",
-            date: "2023",
-            icon: <FaAward className="w-8 h-8 text-orange-500" />
-        },
-        {
-            title: "Belajar Fundamental Aplikasi Android",
-            issuer: "Dicoding",
-            date: "2023",
-            icon: <FaAward className="w-8 h-8 text-rose-500" />
-        },
-        {
-            title: "Belajar Pengembangan Aplikasi Android Intermediate",
-            issuer: "Dicoding",
-            date: "2023",
-            icon: <FaCertificate className="w-8 h-8 text-purple-500" />
-        },
-        {
-            title: "Menjadi Android Developer Expert",
-            issuer: "Dicoding",
-            date: "2024",
-            icon: <FaCertificate className="w-8 h-8 text-blue-500" />
-        },
-        {
-            title: "Belajar Dasar Git dengan GitHub",
-            issuer: "Dicoding",
-            date: "2023",
-            icon: <FaAward className="w-8 h-8 text-gray-700" />
-        },
-        {
-            title: "Google UX Design Professional Certificate",
-            issuer: "Coursera",
-            date: "2023",
-            icon: <FaCertificate className="w-8 h-8 text-emerald-500" />
-        }
-    ];
+    const [certifications, setCertifications] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchCertifications = async () => {
+            try {
+                const res = await fetch('/api/certifications');
+                if (res.ok) {
+                    const data = await res.json();
+                    setCertifications(data);
+                }
+            } catch (error) {
+                console.error('Failed to fetch certifications:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchCertifications();
+    }, []);
 
     return (
         <section id="certifications" className="relative w-full py-20 px-4 sm:px-6 lg:px-8 bg-gray-50/50">
@@ -70,7 +59,11 @@ export default function CertificationsSection() {
                         >
                             <div className="flex justify-between items-start mb-4">
                                 <div className="p-3 bg-gray-50 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                                    {cert.icon}
+                                    {cert.icon && IconMap[cert.icon] ? (
+                                        React.createElement(IconMap[cert.icon], { className: `w-8 h-8 ${cert.iconColor}` })
+                                    ) : (
+                                        <FaAward className={`w-8 h-8 ${cert.iconColor || 'text-gray-400'}`} />
+                                    )}
                                 </div>
                                 <span className="text-xs font-mono font-bold text-gray-400 bg-gray-50 px-3 py-1 rounded-full">
                                     {cert.date}
@@ -87,6 +80,9 @@ export default function CertificationsSection() {
                             {/* Hover accent edge */}
                             <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gray-200 to-transparent group-hover:via-emerald-400 transition-all duration-500 rounded-b-3xl" />
                         </motion.div>
+                    ))}
+                    {loading && Array.from({ length: 6 }).map((_, i) => (
+                        <div key={i} className="h-[200px] rounded-3xl bg-gray-200 animate-pulse hidden sm:block"></div>
                     ))}
                 </div>
             </div>

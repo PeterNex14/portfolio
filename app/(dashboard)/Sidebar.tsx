@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Briefcase, FolderGit2 } from "lucide-react";
+import { LayoutDashboard, Briefcase, FolderGit2, Code2, Award } from "lucide-react";
 
 export default function Sidebar() {
     const pathname = usePathname();
@@ -11,6 +11,8 @@ export default function Sidebar() {
         { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
         { name: "Experiences", href: "/admin/experiences", icon: Briefcase },
         { name: "Projects", href: "/admin/projects", icon: FolderGit2 },
+        { name: "Skills", href: "/admin/skills", icon: Code2 },
+        { name: "Certs", href: "/admin/certifications", icon: Award },
     ];
 
     return (

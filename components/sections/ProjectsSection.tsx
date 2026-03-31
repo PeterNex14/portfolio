@@ -3,130 +3,29 @@ import Image from "next/image";
 import Link from "next/link";
 import { FiArrowUpRight, FiGithub } from "react-icons/fi";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 export default function ProjectsSection() {
-    const projects = [
-        {
-            title: "Dicoding Events App",
-            description: "Android application providing information about upcoming events from Dicoding. Explore, bookmark, and receive notifications.",
-            image: "/dicoding-events.png",
-            link: "https://github.com/PeterNex14/dicoding-event-app",
-            type: "mobile",
-            tech: ["Kotlin", "Retrofit", "Room", "Android View"],
-            scale: "scale-250",
-            offset: "bottom-[20%] right-[-30%]"
-        },
-        {
-            title: "Chirpy",
-            description: "Social media backend API built with Go. Demonstrates robust backend systems, authentication, and RESTful API design.",
-            image: "/chirpy.png",
-            link: "https://github.com/PeterNex14/Chirpy.git",
-            type: "backend",
-            tech: ["Go", "PostgreSQL", "JWT", "REST API"],
-            scale: "scale-200",
-            offset: "bottom-[20%] right-[-30%]"
-        },
-        {
-            title: "Blog Aggregator",
-            description: "Gator is a CLI tool built in Go that functions as a personal RSS feed aggregator.",
-            image: "/blog-aggregator.png",
-            link: "https://github.com/PeterNex14/blog-aggregator.git",
-            type: "cli",
-            tech: ["Go", "PostgreSQL", "CLI", "RSS"],
-            scale: "scale-200",
-            offset: "bottom-[20%] right-[-30%]"
-        },
-        {
-            title: "Pokedex CLI",
-            description: "CLI application written in Go. Interacts with the PokeAPI to simulate exploring and catching Pokemon.",
-            image: "/pokedex.png",
-            link: "https://github.com/PeterNex14/pokedex-cli.git",
-            type: "cli",
-            tech: ["Go", "REST API", "CLI"],
-            scale: "scale-200",
-            offset: "bottom-[20%] right-[-30%]"
-        },
-        {
-            title: "Expense Tracker CLI",
-            description: "Personal expense tracker for the CLI. Manage finances, record income/expenses, and view history from the terminal.",
-            image: "/expense-tracker.png",
-            link: "https://github.com/PeterNex14/expenses-tracker-cli.git",
-            type: "cli",
-            tech: ["Go", "SQLite", "CLI"],
-            scale: "scale-200",
-            offset: "bottom-[20%] right-[-30%]"
-        },
-        {
-            title: "AI Agent Boot",
-            description: "CLI-based AI coding assistant. Leverages Gemini API to perform autonomous tasks on the local file system.",
-            image: "/ai-agent.png",
-            link: "https://github.com/PeterNex14/ai-coding-agent.git",
-            type: "cli",
-            tech: ["Go", "Gemini API", "CLI"],
-            scale: "scale-200",
-            offset: "bottom-[20%] right-[-30%]"
-        },
-        {
-            title: "Static Site Generator",
-            description: "Custom-built in Python. Converts raw Markdown content into a full HTML website ready for deployment.",
-            image: "/static-site.png",
-            link: "https://github.com/PeterNex14/static-site-generator.git",
-            type: "web",
-            tech: ["Python", "Markdown", "HTML"],
-            scale: "scale-200",
-            offset: "bottom-[20%] right-[-30%]"
-        },
-        {
-            title: "Bookbot",
-            description: "CLI tool that analyzes text files to gather statistics, reporting word counts and character frequencies.",
-            image: "/bookbot.png",
-            link: "https://github.com/PeterNex14/Bookbot.git",
-            type: "cli",
-            tech: ["Python", "CLI", "Data Analysis"],
-            scale: "scale-200",
-            offset: "bottom-[20%] right-[-50%]"
-        },
-        {
-            title: "Klinik Anugerah (Mobile)",
-            description: "Digital medical record app utilizing React Native to facilitate patient registration and viewing of health data.",
-            image: "/mockup.png",
-            link: "#",
-            type: "mobile",
-            tech: ["React Native", "TypeScript", "Redux"],
-            scale: "scale-150",
-            offset: "bottom-[-60%] right-[-30%] w-[140%] h-[140%]"
-        },
-        {
-            title: "Klinik Anugerah (Web)",
-            description: "Digital medical record dashboard utilizing NextJS to facilitate administration and standardized access for medical staff.",
-            image: "/mockup_dashboard.png",
-            link: "#",
-            type: "web",
-            tech: ["Next.js", "TailwindCSS", "PostgreSQL"],
-            scale: "scale-140",
-            offset: "bottom-[-35%] right-[-50%] w-[140%] h-[140%]"
-        },
-        {
-            title: "My City App",
-            description: "Practice project built with Android Jetpack Compose displaying categories of city places.",
-            image: "/phone-category.png",
-            link: "https://github.com/PeterNex14/my-city-app.git",
-            type: "mobile",
-            tech: ["Kotlin", "Jetpack Compose"],
-            scale: "scale-185",
-            offset: "bottom-[-10%] w-full h-[60%]"
-        },
-        {
-            title: "Movies App",
-            description: "Android app showing movie lists, details, and bookmarks built during Studi Independent Infinite Learning.",
-            image: "/movies_app.png",
-            link: "https://github.com/PeterNex14/MoviesApp.git",
-            type: "mobile",
-            tech: ["Kotlin", "Retrofit", "Glide"],
-            scale: "scale-175",
-            offset: "bottom-[-10%] w-full h-[60%]"
-        }
-    ];
+    const [projects, setProjects] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchProjects = async () => {
+            try {
+                const res = await fetch('/api/projects');
+                if (res.ok) {
+                    const data = await res.json();
+                    setProjects(data);
+                }
+            } catch (error) {
+                console.error('Failed to fetch projects:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProjects();
+    }, []);
 
     return (
         <section id="projects" className="relative w-full py-20 px-4 sm:px-6 lg:px-8">
@@ -143,7 +42,14 @@ export default function ProjectsSection() {
                     <div className="mt-4 w-24 h-1.5 bg-gradient-to-r from-orange-500 to-rose-500 rounded-full mx-auto" />
                 </motion.div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                {loading ? (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 animate-pulse opacity-20">
+                        {Array.from({ length: 6 }).map((_, i) => (
+                            <div key={i} className="rounded-[2rem] bg-gray-400 h-[400px]"></div>
+                        ))}
+                    </div>
+                ) : (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     {projects.map((project, i) => (
                         <motion.div
                             key={i}
@@ -165,7 +71,7 @@ export default function ProjectsSection() {
                                         {project.description}
                                     </p>
                                     <div className="flex flex-wrap gap-2 mt-4">
-                                        {project.tech.map((tech, idx) => (
+                                        {project.tech.map((tech: string, idx: number) => (
                                             <span key={idx} className="px-2.5 py-1 text-xs font-mono font-semibold text-orange-600 bg-orange-50/80 border border-orange-100/50 rounded-md">
                                                 {tech}
                                             </span>
@@ -203,7 +109,8 @@ export default function ProjectsSection() {
                             </div>
                         </motion.div>
                     ))}
-                </div>
+                    </div>
+                )}
             </div>
         </section>
     );

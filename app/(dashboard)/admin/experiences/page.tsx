@@ -6,7 +6,8 @@ type Experience = {
     id: string;
     role: string;
     company: string;
-    period: string;
+    startDate: string;
+    endDate: string | null;
     description: string[];
     updatedAt: string;
 };
@@ -21,12 +22,13 @@ export default function AdminExperiencesPage() {
     const [formData, setFormData] = useState({
         role: "",
         company: "",
-        period: "",
-        description: "", // We will split by newline to create the array
+        startDate: "",
+        endDate: "", 
+        description: "",
     });
 
     const resetForm = () => {
-        setFormData({ role: "", company: "", period: "", description: "" });
+        setFormData({ role: "", company: "", startDate: "", endDate: "", description: "" });
         setIsCreating(false);
         setEditingId(null);
     };
@@ -65,7 +67,10 @@ export default function AdminExperiencesPage() {
                 method,
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    ...formData,
+                    role: formData.role,
+                    company: formData.company,
+                    startDate: formData.startDate,
+                    endDate: formData.endDate || null,
                     description: descriptionArray,
                 }),
             });
@@ -84,10 +89,16 @@ export default function AdminExperiencesPage() {
     };
 
     const handleEditClick = (exp: Experience) => {
+        const toMonthYear = (dateStr: string | null) => {
+            if (!dateStr) return "";
+            return dateStr.substring(0, 7);
+        };
+
         setFormData({
             role: exp.role,
             company: exp.company,
-            period: exp.period,
+            startDate: toMonthYear(exp.startDate),
+            endDate: toMonthYear(exp.endDate),
             description: exp.description.join('\n'),
         });
         setEditingId(exp.id);
@@ -137,17 +148,38 @@ export default function AdminExperiencesPage() {
                     <h2 className="text-xl font-semibold mb-4">{editingId ? 'Edit Experience' : 'Add New Experience'}</h2>
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
+                            <div className="md:col-span-2">
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Company</label>
                                 <input required type="text" value={formData.company} onChange={e => setFormData({...formData, company: e.target.value})} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-orange-500" placeholder="e.g. Google" />
                             </div>
-                            <div>
+                            <div className="md:col-span-2">
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Role</label>
                                 <input required type="text" value={formData.role} onChange={e => setFormData({...formData, role: e.target.value})} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-orange-500" placeholder="e.g. Software Engineer" />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Period (Date)</label>
-                                <input required type="text" value={formData.period} onChange={e => setFormData({...formData, period: e.target.value})} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-orange-500" placeholder="e.g. Jan 2024 - Present" />
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Start Date</label>
+                                <input 
+                                    required 
+                                    type={formData.startDate ? "month" : "text"}
+                                    onFocus={(e) => e.target.type = 'month'}
+                                    onBlur={(e) => { if (!formData.startDate) e.target.type = 'text'; }}
+                                    value={formData.startDate} 
+                                    onChange={e => setFormData({...formData, startDate: e.target.value})} 
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-orange-500" 
+                                    placeholder="YYYY-MM" 
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">End Date (Leave empty if Present)</label>
+                                <input 
+                                    type={formData.endDate ? "month" : "text"}
+                                    onFocus={(e) => e.target.type = 'month'}
+                                    onBlur={(e) => { if (!formData.endDate) e.target.type = 'text'; }}
+                                    value={formData.endDate} 
+                                    onChange={e => setFormData({...formData, endDate: e.target.value})} 
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-orange-500" 
+                                    placeholder="YYYY-MM" 
+                                />
                             </div>
                         </div>
                         <div>
@@ -176,7 +208,8 @@ export default function AdminExperiencesPage() {
                             <tr>
                                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Company</th>
                                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Period</th>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Start Date</th>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">End Date</th>
                                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Edited</th>
                                 <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                             </tr>
@@ -186,7 +219,12 @@ export default function AdminExperiencesPage() {
                                 <tr key={exp.id} className="hover:bg-gray-50">
                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{exp.company}</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{exp.role}</td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{exp.period}</td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        {exp.startDate ? new Date(exp.startDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : 'N/A'}
+                                    </td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        {exp.endDate ? new Date(exp.endDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : 'Present'}
+                                    </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{new Date(exp.updatedAt).toLocaleDateString()}</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <button 

@@ -19,9 +19,43 @@ model experience {
   id          String   @id @default(uuid())
   role        String
   company     String
-  period      String
+  startDate   DateTime
+  endDate     DateTime? // Optional for current positions
   description String[] // Array of bullet points
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now()) @updatedAt
 }
 
+model project {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  image       String
+  link        String
+  type        String
+  tech        String[] // Array of tech stack items
+  scale       String
+  offset      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+}
+
+model skill {
+  id          String   @id @default(uuid())
+  label       String
+  icon        String
+  category    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+}
+
+model certification {
+  id          String   @id @default(uuid())
+  title       String
+  issuer      String
+  date        String
+  icon        String
+  iconColor   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+}

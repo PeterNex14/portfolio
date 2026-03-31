@@ -20,10 +20,10 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { role, company, period, description } = body;
+    const { role, company, startDate, endDate, description } = body;
 
     // Validate required fields
-    if (!role || !company || !period || !description || !Array.isArray(description)) {
+    if (!role || !company || !startDate || !description || !Array.isArray(description)) {
       return NextResponse.json(
         { error: 'Missing or invalid required fields' },
         { status: 400 }
@@ -34,7 +34,8 @@ export async function POST(request: Request) {
       data: {
         role,
         company,
-        period,
+        startDate: new Date(startDate),
+        endDate: endDate ? new Date(endDate) : null,
         description,
       },
     });
@@ -88,10 +89,10 @@ export async function PUT(request: Request) {
     }
 
     const body = await request.json();
-    const { role, company, period, description } = body;
+    const { role, company, startDate, endDate, description } = body;
 
     // Validate required fields
-    if (!role || !company || !period || !description || !Array.isArray(description)) {
+    if (!role || !company || !startDate || !description || !Array.isArray(description)) {
       return NextResponse.json(
         { error: 'Missing or invalid required fields' },
         { status: 400 }
@@ -103,7 +104,8 @@ export async function PUT(request: Request) {
       data: {
         role,
         company,
-        period,
+        startDate: new Date(startDate),
+        endDate: endDate ? new Date(endDate) : null,
         description,
       },
     });

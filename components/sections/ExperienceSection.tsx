@@ -7,7 +7,8 @@ type Experience = {
     id: string;
     role: string;
     company: string;
-    period: string;
+    startDate: string;
+    endDate: string | null;
     description: string[];
 };
 
@@ -80,7 +81,9 @@ export default function ExperienceSection() {
                             <h3 className="font-sans text-2xl font-bold text-gray-900 mb-1">{item.company}</h3>
                             <p className="font-mono text-sm sm:text-base font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-rose-500 mb-2">{item.role}</p>
                             <span className="inline-block px-3 py-1 mb-6 text-xs font-mono font-medium text-gray-500 bg-gray-100 rounded-full w-max">
-                                {item.period}
+                                {new Date(item.startDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                                {' - '}
+                                {item.endDate ? new Date(item.endDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : 'Present'}
                             </span>
                             
                             <div className="flex flex-col gap-3">
